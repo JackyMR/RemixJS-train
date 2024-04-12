@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
+import { Button } from "antd";
 
 import { useOptionalUser } from "~/utils";
 
@@ -7,6 +8,7 @@ export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 
 export default function Index() {
   const user = useOptionalUser();
+  const navigate = useNavigate();
   return (
     <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
       <div className="relative sm:pb-16 sm:pt-8">
@@ -52,6 +54,11 @@ export default function Index() {
                     >
                       Log In
                     </Link>
+                    <Button onClick={() => {
+                      navigate("/about");
+                    }}>
+                      Log out
+                    </Button>
                   </div>
                 )}
               </div>
